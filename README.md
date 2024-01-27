@@ -10,4 +10,4 @@ To find out more visit [https://containers.dev/](https://containers.dev/).
 
 #### References
 
-* [Rust & PostgreSQL (rust-postgres)](https://github.com/devcontainers/templates/blob/main/src/rust-postgres/README.md)
+* [Development Containers](https://containers.dev/)
