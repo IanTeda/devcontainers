@@ -1,0 +1,73 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/rust
+{
+	"name": "Rust",
+
+	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
+	//"image": "mcr.microsoft.com/devcontainers/rust:1-1-bullseye",
+	"dockerComposeFile": "docker-compose.yaml",
+
+	// docker-compose entry
+	"service": "app",
+
+	"workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+	
+	// Features to add to the dev container. More info: https://containers.dev/features.
+	// https://containers.dev/features
+	// "features": {
+	// 	"ghcr.io/devcontainers/features/rust:1": {
+	// 		"version": "latest",
+	// 		"profile": "minimal"
+	// 	},
+	// 	"ghcr.io/lee-orr/rusty-dev-containers/cargo-binstall:0": {},
+	// 	"ghcr.io/lee-orr/rusty-dev-containers/cargo-make:0": {},
+	// 	"ghcr.io/lee-orr/rusty-dev-containers/cargo-watch:0": {}
+	// },
+
+	// Use 'mounts' to make the cargo cache persistent in a Docker Volume.
+	"mounts": [
+		{
+			"source": "devcontainer-cargo-cache-${devcontainerId}",
+			"target": "/usr/local/cargo",
+			"type": "volume"
+		}
+	],
+
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	// "forwardPorts": [],
+
+	// Use 'postCreateCommand' to run commands after the container is created.
+	"postCreateCommand": "rustc --version",
+
+	// Configure tool-specific properties.
+	"customizations": {
+		"vscode": {
+			"settings": {
+				// VS Code don't watch files under ./target
+				"files.watcherExclude": {
+					"**/target/**": true
+				},
+				"rust-analyzer.checkOnSave.command": "clippy"
+			},
+
+			// Add the IDs of extensions you want installed when the container is created.
+			"extensions": [
+				"gruntfuggly.todo-tree", // TODO tree
+				"jedeop.crates-completer", // cargo complete
+				"jscearcy.rust-doc-viewer", // Rust doc viewer
+				"panicbit.cargo",
+				"rust-lang.rust-analyzer", // Rust language server
+				"serayuzgur.crates", // TODO is this a double up
+				"swellaby.vscode-rust-test-adapter", // Rust test helper
+				"tamasfe.even-better-toml", // TOML file 
+				"tyriar.sort-lines", // Sort lines
+				"mtxr.sqltools", // SQL Explorer
+				"mtxr.sqltools-driver-pg", // Postgress driver
+				//"chenxuan.cargo-crate-completer",
+			]
+		}
+	}
+
+	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+	// "remoteUser": "root"
+}

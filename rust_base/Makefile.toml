@@ -1,0 +1,31 @@
+###############################################################################
+## CARGO MAKEFILE
+## Rust task runner and build tool.
+##
+## https://github.com/sagiegurari/cargo-make
+## $ cargo install --force cargo-make
+## ############################################################################
+
+## https://github.com/xd009642/tarpaulin
+## $ cargo make tarpaulin
+[tasks.tarpaulin]
+install_crate = "cargo-tarpaulin"
+command = "cargo"
+args = ["tarpaulin", "--ignore-tests"]
+
+## https://docs.rs/cargo-audit/latest/cargo_audit/index.html
+## $ cargo make audit
+[tasks.audit]
+install_crate = "cargo-audit"
+command = "cargo"
+args = ["audit"]
+
+## $ cargo make my_flow
+[tasks.my_flow]
+dependencies = [
+    "tarpaulin",
+    "audit",
+    # "format",
+    # "build",
+    # "test"
+]
