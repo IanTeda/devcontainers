@@ -3,8 +3,14 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
+# Rust build targets
 target
+
+## Secretes
 .env
+
+## Docker-compose volumes
+docker
 
 # User-specific files
 *.suo

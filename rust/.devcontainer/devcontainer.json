@@ -8,7 +8,7 @@
 	"dockerComposeFile": "docker-compose.yaml",
 
 	// docker-compose entry
-	"service": "app",
+	"service": "devservice",
 
 	"workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
 	
@@ -34,6 +34,7 @@
 	],
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	// Only needed if requiring access outside of vscode
 	// "forwardPorts": [],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
@@ -47,7 +48,20 @@
 				"files.watcherExclude": {
 					"**/target/**": true
 				},
-				"rust-analyzer.checkOnSave.command": "clippy"
+				"rust-analyzer.checkOnSave.command": "clippy",
+				// SQL Tools Connection Setting
+				"sqltools.connections": [
+					{
+						"name": "Dev Container - Postgres",
+						"driver": "PostgreSQL",
+						"previewLimit": 50,
+						"server": "postgres", // docker-compose service name
+						"port": 5432,
+						"database": "postgres",
+						"username": "postgres",
+						"password": "postgres"
+					}
+				],
 			},
 
 			// Add the IDs of extensions you want installed when the container is created.
