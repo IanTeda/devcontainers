@@ -1,17 +1,8 @@
 // For format details, see https://aka.ms/devcontainer.json. For config options, see the
 // README at: https://github.com/devcontainers/templates/tree/main/src/rust
 {
-	"name": "Rust",
+	"name": "Rust Development",
 
-	// Use a docker image as the dev container
-	// "image": "mcr.microsoft.com/devcontainers/rust:1-1-bullseye",
-	
-	// User a Dockerfile as a devctainer
-	// "build": {
-	// 	// Path is relative to the devcontainer.json file.
-	// 	"dockerfile": "Dockerfile"
-	// },
-	
 	// Use a docker-compose as the dev contaienr
 	"dockerComposeFile": "docker-compose.yml",
 	"service": "devcontainer",
@@ -28,7 +19,7 @@
 	
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	// "features": {},
-	
+
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	"forwardPorts": [
 		"5432:5432",
@@ -41,11 +32,11 @@
 		"6379": {
 			"label": "Redis"
 		}
-	},
+	}, 
 	
 	// Use 'postCreateCommand' to run commands after the container is created.
 	"postCreateCommand": "rustc --version",
-	
+
 	// Configure tool-specific properties.
 	"customizations": {
 		"vscode": {
@@ -55,6 +46,8 @@
 					"**/target/**": true
 				},
 				"rust-analyzer.checkOnSave.command": "clippy",
+				// Do not sent telementary
+				"database-client.telemetry.usesOnlineServices": false,
 				// SQL Tools Connection Setting
 				"sqltools.connections": [
 					{
@@ -71,25 +64,24 @@
 			},
 			// Add the IDs of extensions you want installed when the container is created.
 			"extensions": [
-				"gruntfuggly.todo-tree", // TODO tree
-				"jedeop.crates-completer", // cargo complete
-				"jscearcy.rust-doc-viewer", // Rust doc viewer
+				"gruntfuggly.todo-tree",
+				"jedeop.crates-completer",
+				"jscearcy.rust-doc-viewer",
 				"panicbit.cargo",
-				"rust-lang.rust-analyzer", // Rust language server
-				"serayuzgur.crates", // TODO is this a double up
-				"swellaby.vscode-rust-test-adapter", // Rust test helper
-				"tamasfe.even-better-toml", // TOML file 
-				"tyriar.sort-lines", // Sort lines
-				"mtxr.sqltools", // SQL Explorer
-				"mtxr.sqltools-driver-pg", // Postgress driver
-				//"chenxuan.cargo-crate-completer",
-				"ms-azuretools.vscode-docker", // Docker plugin
+				"rust-lang.rust-analyzer",
+				"serayuzgur.crates",
+				"swellaby.vscode-rust-test-adapter",
+				"tamasfe.even-better-toml",
+				"tyriar.sort-lines",
+				"mtxr.sqltools",
+				"mtxr.sqltools-driver-pg",
+				"ms-azuretools.vscode-docker",
+				"cweijan.vscode-database-client2"
 			]
 		}
 	},
 
 	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
-	// TODO: Need to use root otherwise cargo has permission issues, is there
 	// another way
 	"remoteUser": "root"
 }
